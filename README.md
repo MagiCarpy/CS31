@@ -1,3 +1,3 @@
 # UCLA CS31
 
-For Homework and Projects
+Homework and Projects
