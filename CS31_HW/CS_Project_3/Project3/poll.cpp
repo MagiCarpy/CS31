@@ -21,7 +21,7 @@ bool isValidUppercaseStateCode(string stateCode);
 bool checkVotes(string pollData, int& index);
 
 int main() {
-    cout << "VALUE: " << hasRightSyntax("R40TXD54CA");
+    cout << "VALUE: " << hasRightSyntax("");
 }
 
 // returns true if parameter pollData meets definition
@@ -29,22 +29,14 @@ bool hasRightSyntax(string pollData) {
     if (pollData == "") {
         return true;
     }
-    if (pollData.size() < 4) {
-        return false;
-    }
+
     //R40TXD54CA EXAMPLE DELETE
     int index = 0;
     while (index != pollData.size()) {
-        cout << "|" << pollData.at(index) << "|"; //DEL
-        char firstChar = pollData.at(index);
-        if (tolower(firstChar) == 'r' || tolower(firstChar) == 'd') {
-            cout << pollData;
-            //check if each poll sequence is valid (party, votes, state)
-            cout << "IN-LOOP";
-            if (!checkVotes(pollData, index))
-                return false;
-        }
-        else {
+        cout << pollData;
+        cout << "LOOP:" << index;
+        //check if each poll sequence is valid (party, votes, state)
+        if (!checkVotes(pollData, index)) {
             return false;
         }
     }
@@ -69,7 +61,12 @@ bool isValidUppercaseStateCode(string stateCode)
 }
 
 bool checkVotes(string pollData, int& index) {
-    index++;
+    char firstChar = pollData.at(index);
+    if (isalpha(firstChar)) {
+        index++;
+    } else {
+        return false;
+    }
     cout << "vote:" << index; //DEL
     // index past the party -> check number of votes
     string numVotes;
@@ -77,17 +74,19 @@ bool checkVotes(string pollData, int& index) {
     if (index == pollData.size() || !isdigit(pollData.at(index))) {
         return false;
     }
-    for (numVotes = ""; numVotes.size() < 2 && isdigit(pollData.at(index)); index++) {
+    for (numVotes = ""; index != pollData.size() && numVotes.size() < 2 && isdigit(pollData.at(index)); index++) {
         numVotes += pollData.at(index);
     }
     cout << " digit:" << index; //DEL
     // index past the digits for numVote -> check state
     string stateCode;
-    if (!isalpha(pollData.at(index))) {
+    if (index == pollData.size() || !isalpha(pollData.at(index))) {
         return false;
     }
-    for (stateCode = ""; stateCode.size() != 2 && isalpha(pollData.at(index)); index++) {
+    for (stateCode = ""; index != pollData.size() && stateCode.size() < 2 && isalpha(pollData.at(index)); index++) {
+        cout << "a";
         stateCode += toupper(pollData.at(index));
+        cout << "b";
     }
     cout << " final:" << index << endl;
     // index ready  to next check next poll sequence
