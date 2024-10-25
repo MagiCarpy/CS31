@@ -21,7 +21,7 @@ bool isValidUppercaseStateCode(string stateCode);
 bool checkVotes(string pollData, int& index);
 
 int main() {
-    cout << "VALUE: " << hasRightSyntax("");
+    cout << "VALUE: " << hasRightSyntax("R40TXD54CAr6Msd28nYL06UT"); //DEL
 }
 
 // returns true if parameter pollData meets definition
@@ -33,8 +33,8 @@ bool hasRightSyntax(string pollData) {
     //R40TXD54CA EXAMPLE DELETE
     int index = 0;
     while (index != pollData.size()) {
-        cout << pollData;
-        cout << "LOOP:" << index;
+        cout << "*" << pollData << "*"; //DEL
+        cout << " LOOP:" << index << " "; //DEL
         //check if each poll sequence is valid (party, votes, state)
         if (!checkVotes(pollData, index)) {
             return false;
@@ -84,11 +84,9 @@ bool checkVotes(string pollData, int& index) {
         return false;
     }
     for (stateCode = ""; index != pollData.size() && stateCode.size() < 2 && isalpha(pollData.at(index)); index++) {
-        cout << "a";
         stateCode += toupper(pollData.at(index));
-        cout << "b";
     }
-    cout << " final:" << index << endl;
+    cout << " final:" << index << endl; //DEL
     // index ready  to next check next poll sequence
     return isValidUppercaseStateCode(stateCode);
 }

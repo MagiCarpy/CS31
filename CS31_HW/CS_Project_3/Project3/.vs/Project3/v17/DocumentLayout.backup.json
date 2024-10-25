@@ -5,9 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{06039B1B-E024-4253-A4BC-DFB1A3849E54}|Project3.vcxproj|C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{06039B1B-E024-4253-A4BC-DFB1A3849E54}|Project3.vcxproj|solutionrelative:poll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\xstring||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,30 +14,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "xstring",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\xstring",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\xstring",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\xstring",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\include\\xstring",
-              "ViewState": "AgIAAMEBAAAAAAAAAIAwwM4BAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-10-25T06:24:09.31Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "poll.cpp",
               "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp",
               "RelativeDocumentMoniker": "poll.cpp",
-              "ToolTip": "C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp*",
-              "RelativeToolTip": "poll.cpp*",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAA8AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp",
+              "RelativeToolTip": "poll.cpp",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABcAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-24T22:58:31.062Z",
               "EditorCaption": ""
