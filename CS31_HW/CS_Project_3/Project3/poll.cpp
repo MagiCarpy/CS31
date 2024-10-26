@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <cassert>
 using namespace std;
 
 /*
@@ -17,22 +18,32 @@ L it's 6 (from UT).
 
 !!!COMPARE WITH FAQ and SPEC!!!
 !!!CHECK ALL THE COMMENTS!!!
+!!!MAKE SURE TO CHECK BEFORE FINAL SUBMISSIONS!!!
 */
 bool hasRightSyntax(string pollData);
 int computeVotes(string pollData, char party, int& voteCount);
 bool isValidUppercaseStateCode(string stateCode);
-bool checkVotes(string pollData, int& index);
+bool checkVoteSegment(string pollData, int& index);
 
 int main() {
+    // TEST CASES
     int votes = 0;
-    //cout << "VALUE: " << hasRightSyntax("R40TXD54CAr6Msd28nYL06UT"); //DEL
-    cout << endl << "VALUE: " << computeVotes("R40TXD54CAr6Msd28nYL06T", 'l', votes) << endl;
+    assert(hasRightSyntax("R40TXD54CA"));
+    assert(!hasRightSyntax("R40MXD54CA"));
+    votes = -999;    // so we can detect whether computeVotes sets votes
+    assert(computeVotes("R40TXD54CAr6Msd28nYL06UT", 'd', votes) == 0 && votes == 82);
+    votes = -999;    // so we can detect whether computeVotes sets votes
+    assert(computeVotes("R40TXD54CA", '%', votes) == 3 && votes == -999);
+    cout << "All tests succeeded" << endl;
+
+    //cout << "VALUE: " << hasRightSyntax("D0CA"); //DEL
+    cout << endl << "VALUE: " << computeVotes("R40TXD54CAr6Msd28nYL06UT", 'R', votes) << endl;
     cout << "VOTES: " << votes;
 }
 
-// Modifies voteCount to amount of votes for a specific party from pollData
+// Modifies voteCount argument to a specific party's total number of votes
 int computeVotes(string pollData, char party, int& voteCount) {
-    //used to keep voteCount unmodified for the 3 special cases
+    // to keep voteCount unmodified for the 3 special cases
     int totalVotes = 0;
 
     // checks if pollData is valid sequence
@@ -48,11 +59,8 @@ int computeVotes(string pollData, char party, int& voteCount) {
     int index = 0;
     while (index != pollData.size()) {
         // checks if correct party char for each segment
-        char firstChar = pollData.at(index);//FIXME: Modify this with casting to char?
-        cout << "firstChar:" << firstChar << " currLetter:" << pollData.at(index) << " PCHAR:" << party << "||";
-        cout << "CHAR TEST: " << (static_cast<char>(tolower(party)) == static_cast<char>(tolower(firstChar))); //DEL
-        if (static_cast<char>(tolower(party)) == static_cast<char>(tolower(firstChar))) { //FIXME: ADD THIS CASTING SYNTAX EVERYWHERE???
-            cout << "PASSED: ";
+        char startChar = pollData.at(index);
+        if (static_cast<char>(tolower(party)) == static_cast<char>(tolower(startChar))) { //FIXME: ADD THIS CASTING SYNTAX EVERYWHERE???
             index++;
             string numVotes;
             for (numVotes = ""; isdigit(pollData.at(index)); index++) {
@@ -87,13 +95,10 @@ bool hasRightSyntax(string pollData) {
         return true;
     }
 
-    //R40TXD54CA EXAMPLE DELETE
     int index = 0;
     while (index != pollData.size()) {
-        cout << "*" << pollData << "*"; //DEL
-        cout << " LOOP:" << index << " "; //DEL
         // check if each poll sequence is valid (party, votes, state)
-        if (!checkVotes(pollData, index)) {
+        if (!checkVoteSegment(pollData, index)) {
             return false;
         }
     }
@@ -101,24 +106,23 @@ bool hasRightSyntax(string pollData) {
 }
 
 // Checks whether each segment of pollData meets definition/syntax
-bool checkVotes(string pollData, int& index) {
-    char firstChar = pollData.at(index); //CHECK GLOBAL VARIABLE?
-    if (isalpha(firstChar)) {
+bool checkVoteSegment(string pollData, int& index) {
+    char startChar = pollData.at(index);
+    if (isalpha(startChar)) {
         index++;
     } else {
         return false;
     }
-    cout << "vote:" << index; //DEL
+
     // index past the party -> check number of votes
     string numVotes;
-    // DEL: test no vote input (EX. D0CA -> DCA)
     if (index == pollData.size() || !isdigit(pollData.at(index))) {
         return false;
     }
     for (numVotes = ""; index != pollData.size() && numVotes.size() < 2 && isdigit(pollData.at(index)); index++) {
         numVotes += pollData.at(index);
     }
-    cout << " digit:" << index; //DEL
+
     // index past the digits for numVote -> check state
     string stateCode;
     if (index == pollData.size() || !isalpha(pollData.at(index))) {
@@ -127,7 +131,7 @@ bool checkVotes(string pollData, int& index) {
     for (stateCode = ""; index != pollData.size() && stateCode.size() < 2 && isalpha(pollData.at(index)); index++) {
         stateCode += toupper(pollData.at(index));
     }
-    cout << " final:" << index << endl; //DEL
+
     // index ready to next check next poll sequence
     return isValidUppercaseStateCode(stateCode);
 }
