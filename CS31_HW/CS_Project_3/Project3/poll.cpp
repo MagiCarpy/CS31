@@ -27,18 +27,42 @@ bool checkVoteSegment(string pollData, int& index);
 
 int main() {
     // TEST CASES
+
+    //hasRightSyntax Function
+    //Valid Input
+    assert(hasRightSyntax("")); // empty string
+    assert(hasRightSyntax("R40TX")); // single vote segment
+    assert(hasRightSyntax("R5TX")); // single digit vote amount 
+    assert(hasRightSyntax("d25txl5cA")); // mixed cases for state code and party
+    assert(hasRightSyntax("g0NYl05MI")); // zero votes and padding with 0
+    assert(hasRightSyntax("R40TXD54CAr6Msd28nYL06UT")); // poll with multiple valid segments
+
+    //Invalid Input
+    assert(!hasRightSyntax(" ")); // space rather than empty string
+    assert(!hasRightSyntax("R4")); // no state code
+    assert(!hasRightSyntax("D4T")); // incomplete state code
+    assert(!hasRightSyntax("D45LL")); // bad state code
+    assert(!hasRightSyntax("D45TXD")); // more than 3 char state code
+    assert(!hasRightSyntax("40TX")); // no party
+    assert(!hasRightSyntax("RTX")); // no vote amount
+    assert(!hasRightSyntax("R111TX")); // more than 3 digit vote amount
+    assert(!hasRightSyntax("R40MX D54CA")); // space in middle of poll data
+    assert(!hasRightSyntax("R40TX:D54CA")); // char in middle of poll data
+    assert(!hasRightSyntax("R40TXaD54CA")); // alphabetic char in middle of poll data
+    assert(!hasRightSyntax("R40TXD54CA ")); // test space after poll data
+
     int votes = 0;
-    assert(hasRightSyntax("R40TXD54CA"));
-    assert(!hasRightSyntax("R40MXD54CA"));
     votes = -999;    // so we can detect whether computeVotes sets votes
     assert(computeVotes("R40TXD54CAr6Msd28nYL06UT", 'd', votes) == 0 && votes == 82);
     votes = -999;    // so we can detect whether computeVotes sets votes
     assert(computeVotes("R40TXD54CA", '%', votes) == 3 && votes == -999);
     cout << "All tests succeeded" << endl;
 
-    //cout << "VALUE: " << hasRightSyntax("D0CA"); //DEL
+    /*
+    cout << "VALUE: " << hasRightSyntax("D0CA"); //DEL
     cout << endl << "VALUE: " << computeVotes("R40TXD54CAr6Msd28nYL06UT", 'R', votes) << endl;
     cout << "VOTES: " << votes;
+    */
 }
 
 // Modifies voteCount argument to a specific party's total number of votes
@@ -138,6 +162,7 @@ bool checkVoteSegment(string pollData, int& index) {
 
 // Return true if the argument is a two-uppercase-letter state code, or
 // false otherwise.
+// borrowed from "web.cs.ucla.edu"
 bool isValidUppercaseStateCode(string stateCode)
 {
     const string codes =

@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\",
+  "WorkspaceRootPath": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_3\\Project3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{06039B1B-E024-4253-A4BC-DFB1A3849E54}|Project3.vcxproj|C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{06039B1B-E024-4253-A4BC-DFB1A3849E54}|Project3.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{06039B1B-E024-4253-A4BC-DFB1A3849E54}|Project3.vcxproj|solutionrelative:poll.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "poll.cpp",
-              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp",
+              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp",
               "RelativeDocumentMoniker": "poll.cpp",
-              "ToolTip": "C:\\Users\\brand\\OneDrive\\Desktop\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp",
+              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_3\\Project3\\poll.cpp",
               "RelativeToolTip": "poll.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAD4v5wAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-24T22:58:31.062Z",
               "EditorCaption": ""
