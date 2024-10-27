@@ -1,0 +1,36 @@
+Report
+
+a. A brief description of notable obstacles you overcame.
+
+I initially attempted to declare a string type, finalOutput, that would be conditionally assigned to a final output message for each specific input error or if all inputs were valid. However, I had an issue outputting the finalOutput message at the end due to having to round the charge amount. Unable to figure out how to store a double with specific precision, I removed finalOutput and just cout each of the possible error messages.
+
+Also tried to optimize the program before even completing it, but ultimately decided to write out a rough outline that compiled and ran sufficiently before tweaking. Seems to be better to just complete a "rough draft" then cleanup/optimize the code afterwards.
+
+
+b. A list of the test data that could be used to thoroughly test your program, along with the reason for each test.
+
+Check Erroneous Input-
+
+Odometer start error message (-1, 5, 1, John Smith, y, 2)
+Odometer end error message (10, 5, 1, John Smith, y, 2)
+Rental days error message (0, 5, -1, John Smith, y, 2)
+Customer name error message (0, 5, 1, "", y, 2)
+Luxury status error message (0, 5, 1, John Smith, yes, 2)
+Month not 1-12 error message (0, 5, 1, John Smith, y, 0)
+
+Add multiple erroneous inputs to see if first error is the one returned.
+
+Check Valid Input-
+
+Check nonluxury charge (0, 0, 5, John Smith, n, 2)
+Check luxury charge (0, 0, 5, John Smith, y, 2)
+
+For 0-100 miles: (0, 50, 5, John Smith, n, 2)
+For 101-600 miles: 
+  If winter months (0, 400, 5, John Smith, n, 12)
+  If other months (0, 400, 5, John Smith, n, 5)
+For 601 miles or greater:
+  If winter months (0, 700, 5, John Smith, n, 12)
+  If other months (0, 700, 5, John Smith, n, 5)
+
+Could also include test cases for each month and specific special cases to check if the conditional statements were written correctly.

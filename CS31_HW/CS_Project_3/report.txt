@@ -1,0 +1,7 @@
+Report
+
+a. A brief description of notable obstacles you overcame.
+
+b. A description of the design of your program. You should use pseudocode in this description where it clarifies the presentation.
+
+c. A list of the test data that could be used to thoroughly test your program, along with the reason for each test. You don't have to include the results of the tests, but you must note which test cases your program does not handle correctly. (This could happen if you didn't have time to write a complete solution, or if you ran out of time while still debugging a supposedly complete solution.) If you use the assert style above for writing your test code, you can copy those asserts, along with a very brief comment about what each is testing for. Notice that most of this portion of your report can be written just after reading the requirements in this specification, before you even start designing your program.

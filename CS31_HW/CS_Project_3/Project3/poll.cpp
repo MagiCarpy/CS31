@@ -51,18 +51,31 @@ int main() {
     assert(!hasRightSyntax("R40TXaD54CA")); // alphabetic char in middle of poll data
     assert(!hasRightSyntax("R40TXD54CA ")); // test space after poll data
 
-    int votes = 0;
-    votes = -999;    // so we can detect whether computeVotes sets votes
-    assert(computeVotes("R40TXD54CAr6Msd28nYL06UT", 'd', votes) == 0 && votes == 82);
-    votes = -999;    // so we can detect whether computeVotes sets votes
-    assert(computeVotes("R40TXD54CA", '%', votes) == 3 && votes == -999);
-    cout << "All tests succeeded" << endl;
 
-    /*
-    cout << "VALUE: " << hasRightSyntax("D0CA"); //DEL
-    cout << endl << "VALUE: " << computeVotes("R40TXD54CAr6Msd28nYL06UT", 'R', votes) << endl;
-    cout << "VOTES: " << votes;
-    */
+    //computeVotes Function
+
+    int votes;
+    votes = -999;
+    // valid poll data returns 0 and modifies votes correctly
+    assert(computeVotes("D40TXR54CAd6MsR28nYL06UT", 'r', votes) == 0 && votes == 82);
+    votes = -999;
+    // valid if other alphabetic party chars
+    assert(computeVotes("D40TXR54CAd6MsR28nYL06UT", 'l', votes) == 0 && votes == 6);
+    votes = -999;
+    // invalid poll data string, returns 1 and keeps votes unmodified
+    assert(computeVotes("R40TX@@@D54CA", 'R', votes) == 1 && votes == -999);
+    votes = -999;
+    // invalid if atleast one state has 0 votes, returns 2 and keeps votes unmodified  
+    assert(computeVotes("R0TXD54CA", 'R', votes) == 2 && votes == -999);
+    votes = -999;
+    assert(computeVotes("R0TXD54CA", 'D', votes) == 2 && votes == -999);
+    votes = -999;
+    assert(computeVotes("R28nYL06UTD0CA", 'L', votes) == 2 && votes == -999);
+    votes = -999;
+    // return 3 and keeps votes unmodified if party char is not letter
+    assert(computeVotes("R40TXD54CA", '%', votes) == 3 && votes == -999);
+
+    cout << "All tests succeeded" << endl;
 }
 
 // Modifies voteCount argument to a specific party's total number of votes
@@ -100,11 +113,18 @@ int computeVotes(string pollData, char party, int& voteCount) {
             // index past digit -> goto next party index
             index += 2;
         } else {
-            // goto to the next segment
+            // goto to the next segment while checking for 0 votes
             index++;
-            while (isdigit(pollData.at(index))) {
-                index++;
+            string numVotes;
+            for (numVotes = ""; isdigit(pollData.at(index)); index++) {
+                numVotes += pollData.at(index);
             }
+            // check if any state has 0 votes
+            if (stoi(numVotes) == 0) {
+                return 2;
+            }
+
+            // index past digit -> goto next party index
             index += 2;
         }
     }

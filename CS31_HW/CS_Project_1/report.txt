@@ -1,1 +1,41 @@
-REPORT
+1. the specific input you provided to the program built from original.cpp in step 5 above that produced incorrect, unusual, or nonsensical output.
+
+How many registered voters were surveyed? 20
+How many of them say they will probably vote for Trarris? -5
+How many of them say they will probably vote for Hump? 25
+
+-25.0% say they will probably vote for Trarris.
+125.0% say they will probably vote for Hump.
+Hump is predicted to win the election.
+
+A negative percent is nonsensical for poll result.
+
+==============================================================
+
+2. the error you introduced into logic_error.cpp
+
+At line 30:
+if (forTrarris < forHump) 
+
+Changed ">" to "<" to cause incorrect results.
+Compiles but returns the opposite of the correct result.
+
+==============================================================
+
+3. the two errors you introduced into compile_error.cpp
+
+At line 11: 
+int forHump 
+
+removed semicolon from int declaration to cause syntax/compile-time error
+Error Code E0065 - expected a ';'
+
+
+At line 30: 
+if forTrarris > forHump
+
+removed parentheses to cause syntax/compile-time error 
+Error Code E0125 - expected a '('
+
+
+Also resulted in other cascading errors (C2146, C2061, C2181) related to the two main compile errors.
