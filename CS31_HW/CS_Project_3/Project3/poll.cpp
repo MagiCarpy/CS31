@@ -20,6 +20,7 @@ L it's 6 (from UT).
 !!!CHECK ALL THE COMMENTS!!!
 !!!MAKE SURE TO CHECK BEFORE FINAL SUBMISSIONS!!!
 */
+
 bool hasRightSyntax(string pollData);
 int computeVotes(string pollData, char party, int& voteCount);
 bool isValidUppercaseStateCode(string stateCode);
@@ -35,7 +36,7 @@ int main() {
     assert(hasRightSyntax("R5TX")); // single digit vote amount 
     assert(hasRightSyntax("d25txl5cA")); // mixed cases for state code and party
     assert(hasRightSyntax("g0NYl05MI")); // zero votes and padding with 0
-    assert(hasRightSyntax("R40TXD54CAr6Msd28nYL06UT")); // poll with multiple valid segments
+    assert(hasRightSyntax("D54CAD40TXr6MsD28nYL06uT")); // poll with multiple valid segments
 
     //Invalid Input
     assert(!hasRightSyntax(" ")); // space rather than empty string
@@ -57,10 +58,10 @@ int main() {
     int votes;
     votes = -999;
     // valid poll data returns 0 and modifies votes correctly
-    assert(computeVotes("D40TXR54CAd6MsR28nYL06UT", 'r', votes) == 0 && votes == 82);
+    assert(computeVotes("R54CAD40TXr6MsD28nYL06uT", 'r', votes) == 0 && votes == 60);
     votes = -999;
     // valid if other alphabetic party chars
-    assert(computeVotes("D40TXR54CAd6MsR28nYL06UT", 'l', votes) == 0 && votes == 6);
+    assert(computeVotes("R54CAD40TXr6MsD28nYL06uT", 'l', votes) == 0 && votes == 6);
     votes = -999;
     // invalid poll data string, returns 1 and keeps votes unmodified
     assert(computeVotes("R40TX@@@D54CA", 'R', votes) == 1 && votes == -999);
@@ -97,7 +98,7 @@ int computeVotes(string pollData, char party, int& voteCount) {
     while (index != pollData.size()) {
         // checks if correct party char for each segment
         char startChar = pollData.at(index);
-        if (static_cast<char>(tolower(party)) == static_cast<char>(tolower(startChar))) { //FIXME: ADD THIS CASTING SYNTAX EVERYWHERE???
+        if (static_cast<char>(tolower(party)) == static_cast<char>(tolower(startChar))) {
             index++;
             string numVotes;
             for (numVotes = ""; isdigit(pollData.at(index)); index++) {
