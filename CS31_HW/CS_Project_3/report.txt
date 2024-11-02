@@ -15,7 +15,7 @@ Function checkVoteSegment (used inside hasRightSyntax):
 
 start at beginning of a vote segment
 
-if valid party char,
+if valid party,
    go past the char
 otherwise return false
 
@@ -27,7 +27,7 @@ if state code exists,
    go past the end of the vote segment 
 
 return whether state code is valid.
-
+------------------------------------------------
 
 Function hasRightSyntax (used inside computeVotes):
 
@@ -42,7 +42,7 @@ repeat until end of poll data string:
 
 if all segments valid,
    return true
-
+------------------------------------------------
 
 Function computeVotes:
 
@@ -68,56 +68,66 @@ Repeat until end of poll data string:
 
 set the reference vote count to the temporary counter amount
 return 0
-
+------------------------------------------------
 
 c. A list of the test data that could be used to thoroughly test your program, along with the reason for each test. If you use the assert style above for writing your test code, you can copy those asserts, along with a very brief comment about what each is testing for.
 
 // TEST CASES
-
-  //hasRightSyntax Function
-
-    //Valid Input
-    assert(hasRightSyntax("")); // empty string
-    assert(hasRightSyntax("R40TX")); // single vote segment
-    assert(hasRightSyntax("R5TX")); // single digit vote amount 
-    assert(hasRightSyntax("d25txl5cA")); // mixed cases for state code and party
-    assert(hasRightSyntax("g0NYl05MI")); // zero votes and padding with 0
-    assert(hasRightSyntax("D54CAD40TXr6MsD28nYL06uT")); // poll with multiple valid segments
-
-    //Invalid Input
-    assert(!hasRightSyntax(" ")); // space rather than empty string
-    assert(!hasRightSyntax("R4")); // no state code
-    assert(!hasRightSyntax("D4T")); // incomplete state code
-    assert(!hasRightSyntax("D45LL")); // bad state code
-    assert(!hasRightSyntax("D45TXD")); // more than 3 char state code
-    assert(!hasRightSyntax("40TX")); // no party
-    assert(!hasRightSyntax("RTX")); // no vote amount
-    assert(!hasRightSyntax("R111TX")); // more than 3 digit vote amount
-    assert(!hasRightSyntax("R40MX D54CA")); // space in middle of poll data
-    assert(!hasRightSyntax("R40TX:D54CA")); // char in middle of poll data
-    assert(!hasRightSyntax("R40TXaD54CA")); // alphabetic char in middle of poll data
-    assert(!hasRightSyntax("R40TXD54CA ")); // test space after poll data
+// Assume valid vote digit syntax is any from 0-99
 
 
-  //computeVotes Function
+//hasRightSyntax Function
 
-    int votes;
-    votes = -999;
-    // valid poll data returns 0 and modifies votes correctly
-    assert(computeVotes("R54CAD40TXr6MsD28nYL06uT", 'r', votes) == 0 && votes == 60);
-    votes = -999;
-    // valid if other alphabetic party chars
-    assert(computeVotes("R54CAD40TXr6MsD28nYL06uT", 'l', votes) == 0 && votes == 6);
-    votes = -999;
-    // invalid poll data string, returns 1 and keeps votes unmodified
-    assert(computeVotes("R40TX@@@D54CA", 'R', votes) == 1 && votes == -999);
-    votes = -999;
-    // invalid if atleast one state has 0 votes, returns 2 and keeps votes unmodified  
-    assert(computeVotes("R0TXD54CA", 'R', votes) == 2 && votes == -999);
-    votes = -999;
-    assert(computeVotes("R0TXD54CA", 'D', votes) == 2 && votes == -999);
-    votes = -999;
-    assert(computeVotes("R28nYL06UTD0CA", 'L', votes) == 2 && votes == -999);
-    votes = -999;
-    // return 3 and keeps votes unmodified if party char is not letter
-    assert(computeVotes("R40TXD54CA", '%', votes) == 3 && votes == -999);
+//Valid Input
+assert(hasRightSyntax("")); // empty string
+assert(hasRightSyntax("R40TX")); // single vote segment
+assert(hasRightSyntax("R5TX")); // single digit vote amount 
+assert(hasRightSyntax("d25txl5cA")); // mixed cases for state code and party
+assert(hasRightSyntax("g0NYl05MI")); // zero votes and padding with 0
+assert(hasRightSyntax("D54CAD40TXr6MsD28nYL06uT")); // poll with multiple valid segments
+assert(hasRightSyntax("D54CAD40TXA6MsF28nYP08HI")); // valid alternative party chars
+assert(hasRightSyntax("D54CAD40TXA66MsF28nYP99HI")); // valid syntax for incorrect electoral vote amount
+
+//Invalid Input
+assert(!hasRightSyntax(" ")); // space rather than empty string
+assert(!hasRightSyntax("R")); // only party
+assert(!hasRightSyntax("R4")); // no state code
+assert(!hasRightSyntax("D4T")); // incomplete state code
+assert(!hasRightSyntax("D45LL")); // bad state code
+assert(!hasRightSyntax("D45TXD")); // more than 2 char state code
+assert(!hasRightSyntax("40TX")); // no party
+assert(!hasRightSyntax("RTX")); // no vote amount
+assert(!hasRightSyntax("R111TX")); // more than 3 digit vote amount
+assert(!hasRightSyntax("R40MX D54CA")); // space in middle of poll data
+assert(!hasRightSyntax("R40TX:D54CA")); // char in middle of poll data
+assert(!hasRightSyntax("R40TXaD54CA")); // alphabetic char in middle of poll data
+assert(!hasRightSyntax("R40TXD54CA ")); // test space after poll data
+assert(!hasRightSyntax(" R40TXD54CA")); // test space leading poll data
+assert(!hasRightSyntax("waddw213vdaw12341dwav%#@%#@")); // completely random string
+
+
+//computeVotes Function
+
+int votes;
+votes = -999;
+// valid poll data returns 0 and modifies votes correctly
+assert(computeVotes("R54CAD40TXr6MsD28nYL06uT", 'r', votes) == 0 && votes == 60);
+votes = -999;
+// valid if other alphabetic party chars
+assert(computeVotes("R54CAD40TXr6MsD28nYL06uT", 'l', votes) == 0 && votes == 6);
+votes = -999;
+// invalid poll data string, returns 1 and keeps votes unmodified
+assert(computeVotes("R40TX@@@D54CA", 'R', votes) == 1 && votes == -999);
+assert(computeVotes("WAAAAAAAAA", 'D', votes) == 1 && votes == -999);
+votes = -999;
+// invalid if atleast one state has 0 votes, returns 2 and keeps votes unmodified  
+assert(computeVotes("R0TXD54CA", 'R', votes) == 2 && votes == -999);
+votes = -999;
+assert(computeVotes("R0TXD54CA", 'D', votes) == 2 && votes == -999);
+votes = -999;
+assert(computeVotes("R28nYL06UTD0CA", 'L', votes) == 2 && votes == -999);
+votes = -999;
+// return 3 and keeps votes unmodified if party char is not letter
+assert(computeVotes("R40TXD54CA", '%', votes) == 3 && votes == -999);
+assert(computeVotes("R40TXD54CA", '.', votes) == 3 && votes == -999);
+assert(computeVotes("R40TXD54CA", ' ', votes) == 3 && votes == -999);
