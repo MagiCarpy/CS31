@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_4\\proj4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{40D250C7-DB7D-4F7A-96F5-5467E2A46DD2}|proj4\\proj4.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_4\\proj4\\proj4\\array.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{40D250C7-DB7D-4F7A-96F5-5467E2A46DD2}|proj4\\proj4.vcxproj|solutionrelative:proj4\\array.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "array.cpp",
+              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_4\\proj4\\proj4\\array.cpp",
+              "RelativeDocumentMoniker": "proj4\\array.cpp",
+              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_4\\proj4\\proj4\\array.cpp*",
+              "RelativeToolTip": "proj4\\array.cpp*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-02T19:32:11.636Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
