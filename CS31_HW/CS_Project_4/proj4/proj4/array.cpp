@@ -6,6 +6,7 @@ using namespace std;
 /*
 Make Sure to Add the "Notwithstanding" checks (return -1)
 DO NOT COMPARE TWO STRING LITERALS  "help" < "hello" (FAQ)
+DELETE COUT AND "DELETE" comments
 */
 
 
@@ -16,19 +17,14 @@ int rotateLeft(string a[], int n, int pos);
 int countRuns(const string a[], int n);
 int flip(string a[], int n);
 int differ(const string a1[], int n1, const string a2[], int n2);
-//int subsequence(const string a1[], int n1, const string a2[], int n2);
-//int lookupAny(const string a1[], int n1, const string a2[], int n2);
-//int separate(string a[], int n, string separator);
+int subsequence(const string a1[], int n1, const string a2[], int n2);
+int lookupAny(const string a1[], int n1, const string a2[], int n2);
+int separate(string a[], int n, string separator);
+
+//DELETE
+void printArr(string a[], int n);
 
 int main() {
-	string folks[6] = { "kamala", "doug", "", "jill", "jd", "donald" };
-	string group[5] = { "kamala", "doug", "donald", "", "jd" };
-	int p = differ(folks, -3, group, 1);  //  returns 1
-	cout << p;
-	//int n = 6;
-	//for (int i = 0; i < n; i++) {
-	//	cout << d[i] << " ";
-	//}
 	return 0;
 }
 
@@ -143,4 +139,98 @@ int differ(const string a1[], int n1, const string a2[], int n2) {
 		}
 	}
 	return smallArrSize;
+}
+
+int subsequence(const string a1[], int n1, const string a2[], int n2) {
+	if (n1 < 0 || n2 < 0) {
+		return -1;
+	}
+
+	int trackSeq = 0;
+	int subSeqIter = 0;
+	for (int i = 0; i < n1; i++) {
+		if (trackSeq == n2) {
+			return (i - n2);
+		}
+
+		if (a1[i] == a2[subSeqIter]) {
+			trackSeq++;
+			subSeqIter++;
+		} else {
+			trackSeq = 0;
+			subSeqIter = 0;
+		}
+	}
+	return -1;
+}
+
+int lookupAny(const string a1[], int n1, const string a2[], int n2) {
+	if (n1 < 0 || n2 < 0) {
+		return -1;
+	}
+	
+	for (int i = 0; i < n1; i++) {
+		for (int j = 0; j < n2; j++) {
+			if (a1[i] == a2[j]) {
+				return i;
+			}
+		}
+	}
+	return -1;
+}
+
+int separate(string a[], int n, string separator) {
+	if (n < 0) {
+		return -1;
+	}
+	/*int num*/
+	int counter = 0;
+	int i = 0;
+	while (i < n && counter < n) {
+		if (a[i] >= separator) {
+			rotateLeft(a, n, i);
+			counter++;
+		} else {
+			i++;
+			counter++;
+		}
+	}
+	//Deal with (all a[i] == separator)
+	int smallestInd = -1; //FIXME: CHECK THIS TEST CASES
+	for (i = 0; i < n; i++) {
+		if (a[i] >= separator) {
+			smallestInd = i;
+			break;
+		}
+	}
+
+	cout << "Before: ";
+	printArr(a, n);
+
+	counter = 0;
+	i = 0;
+	while (i < n && smallestInd != -1 && counter < n-smallestInd) {
+		if (a[smallestInd+i] > separator) {
+			rotateLeft(a, n, smallestInd+i);
+			counter++;
+		} else {
+			i++;
+			counter++;
+		}
+	}
+	cout << "After: ";
+	printArr(a, n);
+
+	if (smallestInd != -1) {
+		return smallestInd;
+	}
+
+	return n;
+}
+
+//DELETE
+void printArr(string a[], int n) {
+	for (int i = 0; i < n; i++) {
+		cout << a[i] << " ";
+	}
 }
