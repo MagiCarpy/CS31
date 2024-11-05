@@ -25,7 +25,77 @@ int separate(string a[], int n, string separator);
 void printArr(string a[], int n);
 
 int main() {
-	return 0;
+	//TEST CASES
+	//Nonmutating
+	string h[8] = { "melania", "kamala", "donald", "tim", "", "doug", "jd", "donald"};
+	assert(lookup(h, 7, "doug") == 5); // string is in array
+	assert(lookup(h, 3, "jd") == -1); // string is not in array
+	assert(lookup(h, 7, "Tim") == -1); // only accept exact match
+	assert(lookup(h, 0, "donald") == -1); // 0 elements in array
+	assert(lookup(h, -1, "donald") == -1); // n is negative
+
+	string i[8] = { "kamala", "melania", "melania", "donald", "tim", "", "doug", "jd" };
+	assert(positionOfMax(i, 8) == 4); // normal input
+	assert(positionOfMax(i, 4) == 1); // multiple valid max strings
+	assert(positionOfMax(i, 0) == -1); // 0 elements in array
+	assert(positionOfMax(i, -1) == -1); // n is negative
+
+	string e[4] = { "donald", "tim", "", "doug" };
+	assert(subsequence(i, 8, e, 4) == 3); // normal input
+	assert(subsequence(i, 6, e, 3) == 3); // normal input (check loop out of bounds)
+	assert(subsequence(h, 7, i, 2) == -1); // no subsequence
+	assert(subsequence(h, 8, i, 1) == 1); // multiple matches return lowest index
+    assert(subsequence(h, 7, e, 0) == 0); // any subsequence match
+	assert(subsequence(h, 0, e, 0) == -1); // 0 element array no subsequences
+	assert(subsequence(h, 0, e, 1) == -1); // 0 element array no subsequences
+	assert(subsequence(h, -1, e, -1) == -1); // n's are negative
+
+	string g[4] = { "melania", "kamala", "jd", "usha" };
+	assert(differ(h, 4, g, 4) == 2); // normal input
+	assert(differ(h, 2, g, 2) == 2); // same array contents
+	assert(differ(h, 3, g, 2) == 2); // differing array lengths
+	assert(differ(h, 1, g, 2) == 1); // differing array lengths
+	assert(differ(h, 4, g, 0) == 0); // single empty array 
+	assert(differ(h, 0, g, 4) == 0); // single empty array 
+	assert(differ(h, 0, g, 0) == 0); // both empty array 
+	assert(differ(h, -1, g, -1) == -1); // n's are negative
+
+	string d[8] = { "kamala", "kamala", "kamala", "tim", "tim", "jeb", "ryan", "jeb" };
+	assert(countRuns(d, 8) == 5); // normal input
+	assert(countRuns(d, 3) == 1); // another normal input (checking sequences correctly)
+	assert(countRuns(d, 0) == 0); // 0 element array
+	assert(countRuns(d, -1) == -1); // n is negative
+
+	//Mutating
+	assert(appendToAll(g, 4, "?") == 4 && g[0] == "melania?" && g[3] == "usha?");
+	// normal input
+	assert(appendToAll(g, 0, "!!") == 0 && g[0] == "melania?" && g[3] == "usha?");
+	// 0 element array no modifying
+	assert(appendToAll(g, -1, "?") == -1 && g[0] == "melania?" && g[3] == "usha?");
+	// n is negative no modifying
+
+	
+	assert(rotateLeft(g, 4, 1) == 1 && g[1] == "jd?" && g[3] == "kamala?");
+	// normal input
+	assert(rotateLeft(e, 4, 0) == 0 && e[0] == "tim" && e[3] == "donald");
+	// normal input (check loop out of bounds)
+	assert(rotateLeft(e, 4, -1) == -1 && e[0] == "tim" && e[3] == "donald");
+	// pos is negative no modifying
+	assert(rotateLeft(e, 4, 5) == -1 && e[0] == "tim" && e[3] == "donald");
+	// pos is greater than n no modifying
+	assert(rotateLeft(e, 0, 3) == -1 && e[0] == "tim" && e[3] == "donald");
+	// 0 element array no modifying
+	assert(rotateLeft(e, -1, 2) == -1 && e[0] == "tim" && e[3] == "donald");
+	// n is negative no modifying
+
+	string f[3] = { "jd", "donald", "gwen" };
+	assert(lookupAny(h, 7, f, 3) == 2);
+	assert(flip(f, 3) == 3 && f[0] == "gwen" && f[2] == "jd");
+
+	assert(separate(h, 7, "jd") == 3);
+
+	cout << "All tests succeeded" << endl;
+
 }
 
 
@@ -73,7 +143,7 @@ int positionOfMax(const string a[], int n) {
 }
 
 int rotateLeft(string a[], int n, int pos) {
-	if (n < 0 || pos >= n) {
+	if (n < 0 || pos >= n || pos < 0) {
 		return -1;
 	}
 	if (pos == n - 1) {
@@ -142,24 +212,24 @@ int differ(const string a1[], int n1, const string a2[], int n2) {
 }
 
 int subsequence(const string a1[], int n1, const string a2[], int n2) {
-	if (n1 < 0 || n2 < 0) {
+	if (n1 <= 0 || n2 < 0) {
 		return -1;
 	}
 
-	int trackSeq = 0;
 	int subSeqIter = 0;
 	for (int i = 0; i < n1; i++) {
-		if (trackSeq == n2) {
+		if (subSeqIter == n2) {
 			return (i - n2);
 		}
 
 		if (a1[i] == a2[subSeqIter]) {
-			trackSeq++;
 			subSeqIter++;
 		} else {
-			trackSeq = 0;
 			subSeqIter = 0;
 		}
+	}
+	if (subSeqIter == n2) {
+		return (n1 - n2);
 	}
 	return -1;
 }
@@ -195,7 +265,7 @@ int separate(string a[], int n, string separator) {
 			counter++;
 		}
 	}
-	//Deal with (all a[i] == separator)
+	// Separately sort all a[i] == separator
 	int smallestInd = -1; //FIXME: CHECK THIS TEST CASES
 	for (i = 0; i < n; i++) {
 		if (a[i] >= separator) {
@@ -203,9 +273,6 @@ int separate(string a[], int n, string separator) {
 			break;
 		}
 	}
-
-	cout << "Before: ";
-	printArr(a, n);
 
 	counter = 0;
 	i = 0;
@@ -218,8 +285,6 @@ int separate(string a[], int n, string separator) {
 			counter++;
 		}
 	}
-	cout << "After: ";
-	printArr(a, n);
 
 	if (smallestInd != -1) {
 		return smallestInd;
