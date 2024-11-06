@@ -5,3 +5,88 @@ a. A brief description of notable obstacles you overcame.
 When writing the separator function, I encountered a roadblock when trying to sort the strings that were equal to the separator in-between those that were less than the separator and greater than the separator. Originally, I just separated the array by two conditions: >= to separator and < separator. After testing, I found that this would not always put strings == separator before the strings > separator. I solved this by adding two subsequent loops to sort the >= separator portion of the array so that strings equal to the separator would be placed at a lower index compared to those that were greater than the separator.
     
 b. A list of the test data that could be used to thoroughly test your functions, along with the reason for each test. 
+
+//TEST CASES
+//Nonmutating Functions
+string h[8] = { "melania", "kamala", "donald", "tim", "", "doug", "jd", "donald"};
+assert(lookup(h, 7, "doug") == 5); // string is in array
+assert(lookup(h, 3, "jd") == -1); // string is not in array
+assert(lookup(h, 7, "Tim") == -1); // only accept exact match
+assert(lookup(h, 0, "donald") == -1); // 0 elements in array
+assert(lookup(h, -1, "donald") == -1); // n is negative
+
+string i[8] = { "kamala", "melania", "melania", "donald", "tim", "", "doug", "jd" };
+assert(positionOfMax(i, 8) == 4); // normal input
+assert(positionOfMax(i, 4) == 1); // multiple valid max strings
+assert(positionOfMax(i, 0) == -1); // 0 elements in array
+assert(positionOfMax(i, -1) == -1); // n is negative
+
+string e[4] = { "donald", "tim", "", "doug" };
+assert(subsequence(i, 8, e, 4) == 3); // normal input
+assert(subsequence(i, 6, e, 3) == 3); // normal input (check loop out of bounds)
+assert(subsequence(h, 7, i, 2) == -1); // no subsequence
+assert(subsequence(h, 8, i, 1) == 1); // multiple matches return lowest index
+assert(subsequence(h, 7, e, 0) == 0); // any subsequence match
+assert(subsequence(h, 0, e, 0) == 0); // 0 element array match any subsequence
+assert(subsequence(h, 0, e, 1) == -1); // 0 element array (not empty subsequence)
+assert(subsequence(h, -1, e, -1) == -1); // n's are negative
+
+string g[4] = { "melania", "kamala", "jd", "usha" };
+assert(differ(h, 4, g, 4) == 2); // normal input
+assert(differ(h, 2, g, 2) == 2); // same array contents
+assert(differ(h, 3, g, 2) == 2); // differing array size
+assert(differ(h, 1, g, 2) == 1); // differing array size
+assert(differ(h, 4, g, 0) == 0); // single empty array 
+assert(differ(h, 0, g, 4) == 0); // single empty array 
+assert(differ(h, 0, g, 0) == 0); // both empty array 
+assert(differ(h, -1, g, -1) == -1); // n's are negative
+
+string d[8] = { "kamala", "kamala", "kamala", "tim", "tim", "jeb", "ryan", "jeb" };
+assert(countRuns(d, 8) == 5); // normal input
+assert(countRuns(d, 3) == 1); // another normal input (checking sequences correctly)
+assert(countRuns(d, 0) == 0); // 0 element array
+assert(countRuns(d, -1) == -1); // n is negative
+
+//Mutating Functions
+assert(appendToAll(g, 4, "?") == 4 && g[0] == "melania?" && g[3] == "usha?");
+// normal input
+assert(appendToAll(g, 0, "!!") == 0 && g[0] == "melania?" && g[3] == "usha?");
+// 0 element array no modifying
+assert(appendToAll(g, -1, "?") == -1 && g[0] == "melania?" && g[3] == "usha?");
+// n is negative no modifying
+
+	
+assert(rotateLeft(g, 4, 1) == 1 && g[1] == "jd?" && g[3] == "kamala?");
+// normal input
+assert(rotateLeft(e, 4, 0) == 0 && e[0] == "tim" && e[3] == "donald");
+// normal input (check loop out of bounds)
+assert(rotateLeft(e, 4, -1) == -1 && e[0] == "tim" && e[3] == "donald");
+// pos is negative no modifying
+assert(rotateLeft(e, 4, 5) == -1 && e[0] == "tim" && e[3] == "donald");
+// pos is greater than n no modifying
+assert(rotateLeft(e, 0, 3) == -1 && e[0] == "tim" && e[3] == "donald");
+// 0 element array no modifying
+assert(rotateLeft(e, 0, 0) == -1 && e[0] == "tim" && e[3] == "donald");
+// 0 element array no modifying
+assert(rotateLeft(e, -1, 2) == -1 && e[0] == "tim" && e[3] == "donald");
+// n is negative no modifying
+
+string f[3] = { "gwen", "jd", "donald" };
+assert(lookupAny(h, 8, f, 3) == 2); // normal input
+assert(lookupAny(h, 8, f, 1) == -1); // normal no match
+assert(lookupAny(h, 8, f, 0) == -1); // 0 element array
+assert(lookupAny(h, 0, f, 3) == -1); // 0 element array
+assert(lookupAny(h, -1, f, -1) == -1); // n's are negative
+
+assert(flip(f, 3) == 3 && f[0] == "donald" && f[2] == "gwen"); // normal input (odd array)
+assert(flip(d, 8) == 8 && d[0] == "jeb" && d[7] == "kamala"); // normal input (even array)
+assert(flip(f, 0) == 0 && f[0] == "donald" && f[2] == "gwen"); // 0 element array no modifying
+assert(flip(f, -1) == -1 && f[0] == "donald" && f[2] == "gwen"); // n's are negative no modifying
+	
+string j[9] = { "melania", "melania", "kamala", "donald", "tim", "", "doug", "jd", "donald"};
+assert(separate(j, 9, "jd") == 4); // normal input
+assert(separate(j, 9, "melania") == 6 && j[7] == "melania"); // multiple equal separator
+assert(separate(j, 9, "donald") == 1 && j[2] == "donald"); // multiple equal separator
+assert(separate(j, 9, "z") == 9); // none after separator
+assert(separate(j, 0, "melania") == 0); // 0 elements 
+assert(separate(j, -1, "tim") == -1); // n is negative

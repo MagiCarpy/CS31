@@ -3,13 +3,6 @@
 #include <cassert>
 using namespace std;
 
-/*
-Make Sure to Add the "Notwithstanding" checks (return -1)
-DO NOT COMPARE TWO STRING LITERALS  "help" < "hello" (FAQ)
-DELETE COUT AND "DELETE" comments
-TEST CASE FOR OUT OF BOUNDS !!!!!!
-*/
-
 
 int appendToAll(string a[], int n, string value);
 int lookup(const string a[], int n, string target);
@@ -22,8 +15,6 @@ int subsequence(const string a1[], int n1, const string a2[], int n2);
 int lookupAny(const string a1[], int n1, const string a2[], int n2);
 int separate(string a[], int n, string separator);
 
-//DELETE
-void printArr(string a[], int n);
 
 int main() {
 		//TEST CASES
@@ -47,15 +38,15 @@ int main() {
 		assert(subsequence(h, 7, i, 2) == -1); // no subsequence
 		assert(subsequence(h, 8, i, 1) == 1); // multiple matches return lowest index
 		assert(subsequence(h, 7, e, 0) == 0); // any subsequence match
-		assert(subsequence(h, 0, e, 0) == -1); // 0 element array
+		assert(subsequence(h, 0, e, 0) == 0); // 0 element array match any subsequence
 		assert(subsequence(h, 0, e, 1) == -1); // 0 element array (not empty subsequence)
 		assert(subsequence(h, -1, e, -1) == -1); // n's are negative
 
 		string g[4] = { "melania", "kamala", "jd", "usha" };
 		assert(differ(h, 4, g, 4) == 2); // normal input
 		assert(differ(h, 2, g, 2) == 2); // same array contents
-		assert(differ(h, 3, g, 2) == 2); // differing array lengths
-		assert(differ(h, 1, g, 2) == 1); // differing array lengths
+		assert(differ(h, 3, g, 2) == 2); // differing array size
+		assert(differ(h, 1, g, 2) == 1); // differing array size
 		assert(differ(h, 4, g, 0) == 0); // single empty array 
 		assert(differ(h, 0, g, 4) == 0); // single empty array 
 		assert(differ(h, 0, g, 0) == 0); // both empty array 
@@ -86,6 +77,8 @@ int main() {
 		// pos is greater than n no modifying
 		assert(rotateLeft(e, 0, 3) == -1 && e[0] == "tim" && e[3] == "donald");
 		// 0 element array no modifying
+		assert(rotateLeft(e, 0, 0) == -1 && e[0] == "tim" && e[3] == "donald");
+		// 0 element array no modifying
 		assert(rotateLeft(e, -1, 2) == -1 && e[0] == "tim" && e[3] == "donald");
 		// n is negative no modifying
 
@@ -108,9 +101,6 @@ int main() {
 		assert(separate(j, 9, "z") == 9); // none after separator
 		assert(separate(j, 0, "melania") == 0); // 0 elements 
 		assert(separate(j, -1, "tim") == -1); // n is negative
-
-
-		cout << "All tests succeeded" << endl;
 
 }
 
@@ -167,11 +157,12 @@ int rotateLeft(string a[], int n, int pos) {
 	if (n < 0 || pos >= n || pos < 0) {
 		return -1;
 	}
+	// if pos is last element (prevent undefined behavior)
 	if (pos == n - 1) {
 		return pos;
 	}
+	// temporarily hold element at pos until elements are shifted left
 	string endString = a[pos];
-	
 	for (int i = pos; i < n-1; i++) {
 		a[i] = a[i + 1];
 	}
@@ -187,9 +178,11 @@ int countRuns(const string a[], int n) {
 	if (n == 0) {
 		return 0;
 	}
+
+	// Tracks if consecutive or single element
 	int count = 1;
 	string prev = a[0];
-	for (int i = 0; i < n; i++) {
+	for (int i = 1; i < n; i++) {
 		string current = a[i];
 		if (current != prev) {
 			count++;
@@ -203,6 +196,7 @@ int flip(string a[], int n) {
 	if (n < 0) {
 		return -1;
 	}
+	// swaps element with opposite index element
 	for (int i = 0; i < n/2; i++) {
 		string temp = a[i];
 		a[i] = a[n - i - 1];
@@ -216,6 +210,7 @@ int differ(const string a1[], int n1, const string a2[], int n2) {
 		return -1;
 	}
 
+	// only check up to the smallest array size
 	int smallArrSize;
 	if (n1 >= n2) {
 		smallArrSize = n2;
@@ -224,6 +219,7 @@ int differ(const string a1[], int n1, const string a2[], int n2) {
 		smallArrSize = n1;
 	}
 
+	// compare corresponding elements up to smallest array size
 	for (int i = 0; i < smallArrSize; i++) {
 		if (a1[i] != a2[i]) {
 			return i;
@@ -233,10 +229,15 @@ int differ(const string a1[], int n1, const string a2[], int n2) {
 }
 
 int subsequence(const string a1[], int n1, const string a2[], int n2) {
-	if (n1 <= 0 || n2 < 0) {
+	if (n1 < 0 || n2 < 0) {
 		return -1;
 	}
 
+	// return first element index if match any subsequence
+	if (n2 == 0) {
+		return 0;
+	}
+	//
 	int subSeqIter = 0;
 	for (int i = 0; i < n1; i++) {
 		if (subSeqIter == n2) {
@@ -259,7 +260,7 @@ int lookupAny(const string a1[], int n1, const string a2[], int n2) {
 	if (n1 < 0 || n2 < 0) {
 		return -1;
 	}
-	
+	// check for each element in a1 if present in a2 
 	for (int i = 0; i < n1; i++) {
 		for (int j = 0; j < n2; j++) {
 			if (a1[i] == a2[j]) {
@@ -274,7 +275,7 @@ int separate(string a[], int n, string separator) {
 	if (n < 0) {
 		return -1;
 	}
-	/*int num*/
+	// First sort for elements >= separator
 	int counter = 0;
 	int i = 0;
 	while (i < n && counter < n) {
@@ -286,15 +287,15 @@ int separate(string a[], int n, string separator) {
 			counter++;
 		}
 	}
-	// Separately sort all a[i] == separator
-	int smallestInd = -1; //FIXME: CHECK THIS TEST CASES
+	// Locate index to return (used for second sort)
+	int smallestInd = -1;
 	for (i = 0; i < n; i++) {
 		if (a[i] >= separator) {
 			smallestInd = i;
 			break;
 		}
 	}
-
+	// Second sort to place elements == separator before elements > separator 
 	counter = 0;
 	i = 0;
 	while (i < n && smallestInd != -1 && counter < n-smallestInd) {
@@ -306,17 +307,10 @@ int separate(string a[], int n, string separator) {
 			counter++;
 		}
 	}
-
+	// check existance of first element not < separator
 	if (smallestInd != -1) {
 		return smallestInd;
 	}
 
 	return n;
-}
-
-//DELETE
-void printArr(string a[], int n) {
-	for (int i = 0; i < n; i++) {
-		cout << a[i] << " ";
-	}
 }
