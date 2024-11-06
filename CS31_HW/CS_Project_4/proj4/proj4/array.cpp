@@ -7,6 +7,7 @@ using namespace std;
 Make Sure to Add the "Notwithstanding" checks (return -1)
 DO NOT COMPARE TWO STRING LITERALS  "help" < "hello" (FAQ)
 DELETE COUT AND "DELETE" comments
+TEST CASE FOR OUT OF BOUNDS !!!!!!
 */
 
 
@@ -100,7 +101,13 @@ int main() {
 		assert(flip(f, 0) == 0 && f[0] == "donald" && f[2] == "gwen"); // 0 element array no modifying
 		assert(flip(f, -1) == -1 && f[0] == "donald" && f[2] == "gwen"); // n's are negative no modifying
 	
-		assert(separate(h, 7, "jd") == 3);
+		string j[9] = { "melania", "melania", "kamala", "donald", "tim", "", "doug", "jd", "donald"};
+		assert(separate(j, 9, "jd") == 4); // normal input
+		assert(separate(j, 9, "melania") == 6 && j[7] == "melania"); // multiple equal separator
+		assert(separate(j, 9, "donald") == 1 && j[2] == "donald"); // multiple equal separator
+		assert(separate(j, 9, "z") == 9); // none after separator
+		assert(separate(j, 0, "melania") == 0); // 0 elements 
+		assert(separate(j, -1, "tim") == -1); // n is negative
 
 
 		cout << "All tests succeeded" << endl;
@@ -112,6 +119,7 @@ int appendToAll(string a[], int n, string value) {
 	if (n < 0) {
 		return -1;
 	}
+	// add value to each element
 	for (int i = 0; i < n; i++) {
 		a[i] += value;
 	}
@@ -122,6 +130,7 @@ int lookup(const string a[], int n, string target) {
 	if (n < 0) {
 		return -1;
 	}
+	// search for target in each element
 	for (int i = 0; i < n; i++) {
 		if (a[i] == target) {
 			return i;
@@ -134,8 +143,10 @@ int positionOfMax(const string a[], int n) {
 	if (n < 0) {
 		return -1;
 	}
+	// counts elements that are >= current check string
 	int maxCounter = 0;
 	for (int i = 0; i < n; i++) {
+		// Compare each element with every other element
 		string currentString = a[i];
 		for (int j = 0; j < n; j++) {
 			if (!(currentString >= a[j])) {
@@ -144,6 +155,7 @@ int positionOfMax(const string a[], int n) {
 			}
 			maxCounter++;
 		}
+		// return earliest index satisfying condition
 		if (maxCounter == n) {
 			return i;
 		}
