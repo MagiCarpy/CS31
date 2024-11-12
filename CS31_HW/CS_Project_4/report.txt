@@ -4,6 +4,7 @@ a. A brief description of notable obstacles you overcame.
 
 When writing the separator function, I encountered a roadblock when trying to sort the strings that were equal to the separator in-between those that were less than the separator and greater than the separator. Originally, I just separated the array by two conditions: >= to separator and < separator. After testing, I found that this would not always put strings == separator before the strings > separator. I solved this by adding two subsequent loops to sort the >= separator portion of the array so that strings equal to the separator would be placed at a lower index compared to those that were greater than the separator.
     
+
 b. A list of the test data that could be used to thoroughly test your functions, along with the reason for each test. 
 
 //TEST CASES

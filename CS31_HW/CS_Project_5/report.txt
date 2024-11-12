@@ -1,0 +1,6 @@
+Report
+
+a. A brief description of notable obstacles you overcame.
+b. A description of the design of your program. You should use pseudocode in this description where it clarifies the presentation. Document the design of your main routine, runOneRound, and any other functions you write. Do not document the getWords or randInt functions.
+
+Your report does not need to describe the data you might use to test this program. 
