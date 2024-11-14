@@ -36,9 +36,35 @@
               "RelativeDocumentMoniker": "proj5\\stars.cpp",
               "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\stars.cpp",
               "RelativeToolTip": "proj5\\stars.cpp",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAowKcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-11T23:08:34.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "utilities.cpp",
+              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp",
+              "RelativeDocumentMoniker": "proj5\\utilities.cpp",
+              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp",
+              "RelativeToolTip": "proj5\\utilities.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAABwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-12T01:24:49.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "utilities.h",
+              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.h",
+              "RelativeDocumentMoniker": "proj5\\utilities.h",
+              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.h",
+              "RelativeToolTip": "proj5\\utilities.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-11-12T01:25:26.759Z",
               "EditorCaption": ""
             },
             {
@@ -53,30 +79,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2024-11-12T01:28:25.44Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "utilities.cpp",
-              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp",
-              "RelativeDocumentMoniker": "proj5\\utilities.cpp",
-              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp",
-              "RelativeToolTip": "proj5\\utilities.cpp",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBwAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-12T01:24:49.325Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "utilities.h",
-              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.h",
-              "RelativeDocumentMoniker": "proj5\\utilities.h",
-              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.h",
-              "RelativeToolTip": "proj5\\utilities.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-12T01:25:26.759Z"
             }
           ]
         }
