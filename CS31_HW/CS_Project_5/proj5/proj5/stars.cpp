@@ -37,20 +37,24 @@ int main()
     the third argument. Notice also that this function does not write 
     the message about the player successfully determining the secret word;
    */
-    char wordlist[MAXWORDS][MAXWORDLEN + 1];
-    int numWords = 12; // FIXME: is required?
-    int n = getWords(wordlist, numWords, WORDFILENAME);
-    for (int i = 0; i < 12; i++) {
-        cout << wordlist[i] << " ";
-    }
-    cout << endl << endl;
 
     // DEL: main routine
 
-    if (n < 1) {
+    char wordlist[MAXWORDS][MAXWORDLEN + 1];
+    int numWordsLoaded = getWords(wordlist, MAXWORDS, WORDFILENAME);
+
+    //DEL: DELETE This code
+    /*
+    for (int i = 0; i < numWordsLoaded; i++) {
+        cout << wordlist[i] << " ";
+    }
+    cout << endl << numWordsLoaded << endl;
+    */
+
+    if (numWordsLoaded < 1) {
         cout << "No words were loaded, so I can't play the game.";
     }
-
+    // prompt and check for number of rounds
     cout << "How many rounds do you want to play? ";
     int totalRounds;
     cin >> totalRounds;
@@ -59,22 +63,48 @@ int main()
         cout << "The number of rounds must be positive.";
     }
 
-    // DEL: store stuff about stats
+    // score stats
+    int maxScore;
+    int minScore;
+    int totalScore = 0;
+
+    // play rounds
     int roundNum = 0;
     while (roundNum < totalRounds) {
         roundNum++;
         int secretRandInt; // random int/index for secret
-        secretRandInt = randInt(0, numWords-1); // FIXME: figure out numWords
+        secretRandInt = randInt(0, numWordsLoaded-1); // FIXME: figure out numWords
 
         cout << endl << "Round " << roundNum << endl;
         cout << "The secret word is " << strlen(wordlist[secretRandInt]) << " letters long." << endl;
-        int score = runOneRound(wordlist, MAXWORDS, secretRandInt);
+        int score = runOneRound(wordlist, numWordsLoaded, secretRandInt);
         if (score == 1) {
             cout << "You got it in " << score << " try." << endl;
         }
         else {
             cout << "You got it in " << score << " tries." << endl;
         } 
+        totalScore += score;
+        
+        // calculate and display stats
+        if (roundNum == 1) {
+            maxScore = score;
+            minScore = score;
+        }
+        else {
+            if (score < minScore) {
+                minScore = score;
+            }
+            else if (score > maxScore) {
+                maxScore = score;
+            }
+        }
+        double average = totalScore / static_cast<double>(roundNum);
+        cout.setf(ios::fixed);
+        cout.precision(2);
+        cout << "Average: " << average << ", minimum : " << minScore
+             << ", maximum : " << maxScore << endl; 
+
         /* DEL: The average number of trials must be written with a decimal
            point and exactly two digits to the right of the decimal point. 
         */

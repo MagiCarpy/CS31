@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|solutionrelative:proj5\\stars.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\myWords.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|solutionrelative:proj5\\myWords.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|solutionrelative:proj5\\utilities.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\myWords.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|solutionrelative:proj5\\myWords.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1B73C655-4389-4D0D-9889-1D6C454FCD57}|proj5\\proj5.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -36,20 +36,20 @@
               "RelativeDocumentMoniker": "proj5\\stars.cpp",
               "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\stars.cpp",
               "RelativeToolTip": "proj5\\stars.cpp",
-              "ViewState": "AgIAAIQAAAAAAAAAAAAowKcAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAGYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-11T23:08:34.941Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "utilities.cpp",
               "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp",
               "RelativeDocumentMoniker": "proj5\\utilities.cpp",
               "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\utilities.cpp",
               "RelativeToolTip": "proj5\\utilities.cpp",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAABwAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-12T01:24:49.325Z",
               "EditorCaption": ""
@@ -69,7 +69,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "myWords.txt",
               "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\myWords.txt",
               "RelativeDocumentMoniker": "proj5\\myWords.txt",
