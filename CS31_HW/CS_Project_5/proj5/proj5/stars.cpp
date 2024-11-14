@@ -1,10 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #pragma warning(disable : 6262)
 #include "utilities.h"
+#include <cstring>
 #include <iostream>
 using namespace std;
 
-const char WORDFILENAME[] = "./myWords.txt";
+const char WORDFILENAME[] = "./myWords.txt"; //DEL: Look at spec
 const int MAXWORDS = 8000;
 
 int runOneRound(const char words[][MAXWORDLEN + 1], int nWords, int wordnum);

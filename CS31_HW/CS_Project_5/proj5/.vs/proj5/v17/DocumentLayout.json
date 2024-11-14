@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "proj5\\stars.cpp",
               "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_5\\proj5\\proj5\\stars.cpp",
               "RelativeToolTip": "proj5\\stars.cpp",
-              "ViewState": "AgIAADcAAAAAAAAAAAAAAE0AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAcAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-11T23:08:34.941Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "proj5\\utilities.cpp",
               "ViewState": "AgIAACwAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-12T01:24:49.325Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T01:24:49.325Z"
             },
             {
               "$type": "Document",
@@ -64,8 +63,7 @@
               "RelativeToolTip": "proj5\\utilities.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-12T01:25:26.759Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T01:25:26.759Z"
             },
             {
               "$type": "Document",
@@ -77,8 +75,7 @@
               "RelativeToolTip": "proj5\\myWords.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-11-12T01:28:25.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T01:28:25.44Z"
             }
           ]
         }
