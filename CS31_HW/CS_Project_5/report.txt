@@ -1,6 +1,97 @@
 Report
 
 a. A brief description of notable obstacles you overcame.
+
+When coming up with a solution to calculate the planets and stars, I tried a few different implementations but would either have an issue traversing the smaller of the two words or not get the correct calculation. I decided to split this into two separate problems to solve. First I solved the C string traversal issue by only traversing the length of the smaller of the secret and trial string. I then implemented the actual calculating part by using copies of both c strings and using two loops first to check for stars and second to check for planets. Each for loop replaces star and planet chars with a '.' to make sure they are not matched again. 
+
 b. A description of the design of your program. You should use pseudocode in this description where it clarifies the presentation. Document the design of your main routine, runOneRound, and any other functions you write. Do not document the getWords or randInt functions.
 
-Your report does not need to describe the data you might use to test this program. 
+Function stringIsLower (used inside runOneRound):
+
+for each word in wordlist
+   if trail is equal to word
+      return true
+return false if no match
+------------------------------------------------
+
+Function inValidWords (used inside runOneRound):
+
+for each char in trail c string
+   if char is not lowercase
+      return false
+return true if c string is lowercase
+------------------------------------------------
+
+Function calcPlanetStars (used inside runOneRound):
+
+make copies of both secret and trail c strings
+make counter for stars and planets
+set counter to the smallest length of secret and trial
+
+for index up to smallest length
+   if secretCopy char equals trialCopy char at same index
+      increment star count by 1
+      replace the char at index of both copies to '.'
+
+for index up to smallest length
+   if secretCopy char equals trialCopy char at same index
+      increment star count by 1
+      replace the char at index of both copies to '.'
+
+for index up to trail length
+   if char at index is '.' skip to next index
+   
+   otherwise
+   for index2 up to secret length
+   if secretCopy char at index2 equals trialCopy at index
+      increment planet count by 1
+      replace the char at index2 of secretCopy to '.'
+      break to next index of trail length
+
+print count of Stars and Planets
+------------------------------------------------
+
+Function runOneRound:
+
+if number of words or secret word index invalid
+   return -1
+
+Make score counter
+repeat game logic until break
+   prompt for trial guess
+   if not 4 to 6 letters
+      print message for invalid trial word length
+      continue and prompt again
+   if trial guess not in wordlist
+      print message for unknown word
+   if trial is equal to secret
+      increment score by 1
+      break out of loop
+   otherwise
+      calculate the planets and stars
+      increment score by 1
+return score
+------------------------------------------------
+
+Main Routine:
+
+Declare wordlist
+Initialize wordlist and number of words to load into wordlist
+Make counter for rounds
+
+if number of loaded rounds less than 1
+   print message about insufficient words
+otherwise
+   prompt user for number of rounds to play
+   do not enter game loop if rounds is not positive
+
+make stat counters
+
+repeat until all rounds are finished
+   print round and secret word info
+   set score to one run of a round
+   After a round
+   print score of the round and add to total score
+   calculate max and min score
+   calculate average score
+   display all stats
