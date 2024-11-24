@@ -1,0 +1,124 @@
+Project 6
+
+
+1. The subparts to this problem involve errors in the use of pointers.
+    
+    a.
+
+    int main() {
+        int arr[3] = { 5, 10, 15 };
+        int* ptr = arr;
+
+        *ptr = 10;          // set arr[0] to 10
+        *(ptr + 1) = 20;    // set arr[1] to 20
+        ptr += 2;
+        *ptr = 30;          // set arr[2] to 30
+
+
+        while (ptr >= arr)
+        {
+            cout << *ptr << endl; // print values
+            ptr--;
+        }
+    }
+
+
+    b.
+
+    The bugged findMax function passes the "pToMax" pointer by value which does not ultimately modify the variable passed into the function. Solve by adding & to the pointer type to pass by reference. 
+
+    void findMax(int arr[], int n, int*& pToMax)
+        {
+            if (n <= 0) 
+                return;      // no items, no maximum!
+        
+            pToMax = arr;
+
+            for (int i = 1; i < n; i++)
+            {
+                if (arr[i] > *pToMax)
+                     pToMax = arr + i;
+            }
+        }       
+
+        int main()
+        {
+            int nums[4] = { 5, 3, 15, 6 };
+            int* ptr = &nums[0];
+
+            findMax(nums, 4, ptr);
+            cout << "The maximum is at address " << ptr << endl;
+            cout << "It's at position " << ptr - nums << endl;
+            cout << "Its value is " << *ptr << endl;
+        }
+
+
+    c.
+    The bugged main function originally had an uninitialized pointer "ptr" with no definite initialized memory address (undefined behavior). Solve by declaring an int type, pass the memory address of that int type to computeCube, and then print out the int value at that memory address.
+
+        void computeCube(int n, int* ncubed)
+        {
+            *ncubed = n * n * n;
+        }
+
+        int main()
+        {
+            int ptr;
+            computeCube(5, &ptr);
+            cout << "Five cubed is " << ptr << endl;
+        }
+
+
+    d. The bugged strequal function checks the memory address for a null byte instead of the char value at that address, the conditional in the loop compares two memory addresses instead of the char value at the address, and the ending should check if both char values are equal to eachother instead of the memory address.
+
+    // return true if two C strings are equal
+    bool strequal(const char str1[], const char str2[])
+    {
+        while (*str1 != 0 && *str2 != 0)  // zero bytes at ends
+        {
+            if (*str1 != *str2)  // compare corresponding characters
+                return false;
+            str1++;            // advance to the next character
+            str2++;
+        }
+        return *str1 == *str2;   // both ended at same time?
+    }
+
+    int main()
+    {
+        char a[15] = "Alex H.";
+        char b[15] = "Alex T.";
+
+        if (strequal(a,b))
+            cout << "They're the same person!\n";
+    }
+
+
+    e. The program's incorrect action is that in the main function, a pointer "ptr" is initialized to a memory address with an indefinite value (undefined behavior) because in getPtrToArray, anArray only exists within the scope of the function and is discarded after being called.
+
+
+2. 
+
+    a. Declare a pointer variable named cat that can point to a variable of type double.
+
+
+
+    b. Declare mouse to be a 5-element array of doubles.
+    
+    c. Make the cat variable point to the last element of mouse.
+    
+    d. Make the double pointed to by cat equal to 25, using the * operator.
+    
+    e. Without using the cat pointer, and without using square brackets, set the fourth element (i.e., the one at position 3) of the mouse array to have the value 42.
+    
+    f. Move the cat pointer back by three doubles.
+    
+    g. Using square brackets, but without using the name mouse, set the third element (i.e., the one at position 2) of the mouse array to have the value 17. (You may use cat.)
+    
+    h. Without using the * operator or the name mouse, but using square brackets, set the double pointed to by cat to have the value 54.
+    
+    i. Using the == operator in the initialization expression, declare a bool variable named d and initialize it with an expression that evaluates to true if cat points to the double at the start of the mouse array, and to false otherwise.
+    
+    j. Using the * operator in the initialization expression, but no square brackets, declare a bool variable named b and initialize it with an expression that evaluates to true if the double pointed to by cat is equal to the double immediately following the double pointed to by cat, and to false otherwise. Do not use the name mouse.
+
+
