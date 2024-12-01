@@ -55,10 +55,7 @@ private:
     Room* m_room;
     int   m_row;
     int   m_col;
-    int   m_swatCounter; //CHECK new
-    // TODO: You'll probably find that a bee object needs an additional
-    // data member to support your implementation of the behavior affected
-    // by being swatted.
+    int   m_health; //CHECK new
 };
 
 class Player
@@ -158,9 +155,7 @@ Bee::Bee(Room* rp, int r, int c)
     m_room = rp;
     m_row = r;
     m_col = c;
-    m_swatCounter = 0; // Check new
-    // TODO: You might discover something to do here to compete the
-    // initialization of a Bee.
+    m_health = INITIAL_BEE_HEALTH;
 }
 
 int Bee::row() const
@@ -205,7 +200,7 @@ void Bee::move()
 
 bool Bee::getSwatted(int dir)  // return true if dies
 {
-    if (m_swatCounter == 1) {
+    if (m_health == 1) {
         return true;
     }
     else {
@@ -243,7 +238,7 @@ bool Bee::getSwatted(int dir)  // return true if dies
             }
             break;
         }
-        m_swatCounter++;
+        m_health--;
         return false;
     }
 }
@@ -534,7 +529,6 @@ bool Room::addPlayer(int r, int c)
 
 bool Room::swatBeeAt(int r, int c, int dir)
 {
-
     for (int bee = 0; bee < m_nBees; bee++) {
         Bee* currBee = m_bees[bee];
         if (currBee->row() == r && currBee->col() == c) {
@@ -545,6 +539,7 @@ bool Room::swatBeeAt(int r, int c, int dir)
                 m_nBees--;
                 return true;
             }
+            return false;
         }
     }
     return false;
@@ -685,8 +680,7 @@ int main()
 {
     // Create a game
     // Use this instead to create a mini-game:   Game g(3, 4, 2);
-    /*Game g(7, 8, 25);*/
-    Game g(3, 4, 2);
+    Game g(7, 8, 25);
 
     // Play the game
     g.play();
