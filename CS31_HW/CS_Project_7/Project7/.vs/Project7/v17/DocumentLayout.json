@@ -3,11 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{462CECCB-BFD5-4EE9-AB6E-18DEE1586F0B}|Project1\\Project1.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\Project1\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{462CECCB-BFD5-4EE9-AB6E-18DEE1586F0B}|Project1\\Project1.vcxproj|solutionrelative:Project1\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\crt\\src\\vcruntime\\delete_scalar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{462CECCB-BFD5-4EE9-AB6E-18DEE1586F0B}|Project1\\Project1.vcxproj|C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\Project1\\bees.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{462CECCB-BFD5-4EE9-AB6E-18DEE1586F0B}|Project1\\Project1.vcxproj|solutionrelative:Project1\\bees.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,32 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "delete_scalar.cpp",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\crt\\src\\vcruntime\\delete_scalar.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-12-01T05:44:41.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Source.cpp",
-              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\Project1\\Source.cpp",
-              "RelativeDocumentMoniker": "Project1\\Source.cpp",
-              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\Project1\\Source.cpp",
-              "RelativeToolTip": "Project1\\Source.cpp",
-              "ViewState": "AgIAAL0CAAAAAAAAAAAAwNICAAAAAAAAAAAAAA==",
+              "Title": "bees.cpp",
+              "DocumentMoniker": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\Project1\\bees.cpp",
+              "RelativeDocumentMoniker": "Project1\\bees.cpp",
+              "ToolTip": "C:\\Users\\brand\\OneDrive\\github\\CS31\\CS31_HW\\CS_Project_7\\Project7\\Project1\\bees.cpp",
+              "RelativeToolTip": "Project1\\bees.cpp",
+              "ViewState": "AgIAAD8CAAAAAAAAAAAAAFMCAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-27T21:14:57.022Z",
+              "WhenOpened": "2024-12-01T06:07:12.066Z",
               "EditorCaption": ""
             }
           ]
