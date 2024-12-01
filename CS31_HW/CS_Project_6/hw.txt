@@ -3,7 +3,7 @@ Project 6
 
 1. The subparts to this problem involve errors in the use of pointers.
     
-    a.
+    a. The bugs were in accessing the value at the pointer (fixed to *(ptr+1)) and decrementing the pointer prematurely in the loop. Also changed the order of assignment {10, 20, 30}.
 
     int main() {
         int arr[3] = { 5, 10, 15 };
@@ -23,9 +23,7 @@ Project 6
     }
 
 
-    b.
-
-    The bugged findMax function passes the "pToMax" pointer by value which does not ultimately modify the variable passed into the function. Solve by adding & to the pointer type to pass by reference. 
+    b. The bugged findMax function passes the "pToMax" pointer by value which does not ultimately modify the variable passed into the function. Solve by adding & to the pointer type to pass by reference. 
 
     void findMax(int arr[], int n, int*& pToMax)
         {
@@ -53,8 +51,7 @@ Project 6
         }
 
 
-    c.
-    The bugged main function originally had an uninitialized pointer "ptr" with no definite initialized memory address (undefined behavior). Solve by declaring an int type, pass the memory address of that int type to computeCube, and then print out the int value at that memory address.
+    c. The bugged main function originally had an uninitialized pointer "ptr" with no definite initialized memory address (undefined behavior). Solve by declaring an int type, pass the memory address of that int type to computeCube, and then print out the int value at that memory address.
 
         void computeCube(int n, int* ncubed)
         {
@@ -94,31 +91,126 @@ Project 6
     }
 
 
-    e. The program's incorrect action is that in the main function, a pointer "ptr" is initialized to a memory address with an indefinite value (undefined behavior) because in getPtrToArray, anArray only exists within the scope of the function and is discarded after being called.
+    e. The program's incorrect action is that in the main function, the pointer "ptr" is initialized to a memory address with an indefinite value (undefined behavior) because in getPtrToArray, anArray only exists within the scope of the function and is discarded after being called.
 
 
 2. 
 
-    a. Declare a pointer variable named cat that can point to a variable of type double.
+    a. double* cat;
+
+    b. double mouse[5];
+    
+    c. cat = &mouse[4];
+
+    d. *cat = 25;
+
+    e. *(mouse+3) = 42;
+
+    f. cat -= 3;
+
+    g. cat[1] = 17;
+    
+    h. cat[0] = 54;
+
+    i. bool d = (cat == mouse);
+
+    j. bool b = (*cat == *(cat+1));
 
 
+3. 
+    a.
 
-    b. Declare mouse to be a 5-element array of doubles.
-    
-    c. Make the cat variable point to the last element of mouse.
-    
-    d. Make the double pointed to by cat equal to 25, using the * operator.
-    
-    e. Without using the cat pointer, and without using square brackets, set the fourth element (i.e., the one at position 3) of the mouse array to have the value 42.
-    
-    f. Move the cat pointer back by three doubles.
-    
-    g. Using square brackets, but without using the name mouse, set the third element (i.e., the one at position 2) of the mouse array to have the value 17. (You may use cat.)
-    
-    h. Without using the * operator or the name mouse, but using square brackets, set the double pointed to by cat to have the value 54.
-    
-    i. Using the == operator in the initialization expression, declare a bool variable named d and initialize it with an expression that evaluates to true if cat points to the double at the start of the mouse array, and to false otherwise.
-    
-    j. Using the * operator in the initialization expression, but no square brackets, declare a bool variable named b and initialize it with an expression that evaluates to true if the double pointed to by cat is equal to the double immediately following the double pointed to by cat, and to false otherwise. Do not use the name mouse.
+    double mean(const double* scores, int numScores)
+    {
+        const double* ptr = scores;
+        double tot = 0;
+        int i = 0;
+        while (i < numScores)
+        {
+            tot += *(ptr+i);
+            i++;
+        }
+        return tot/numScores;
+    }
+
+
+    b. 
+
+    const char* findTheChar(const char* str, char chr)
+    {
+        for (int k = 0; *(str+k) != 0; k++)
+            if (*(str+k) == chr)
+                return (str+k);
+
+        return nullptr;
+    }
+
+    c.
+
+    const char* findTheChar(const char* str, char chr)
+    {
+        for (; *str != 0; str++)
+            if (*str == chr)
+                return str;
+
+        return nullptr;
+    }
+
+
+4. Explanation in the comment below each command
+
+    int main()
+    {
+        int array[6] = { 5, 3, 4, 17, 22, 19 };
+
+        int* ptr = maxwell(array, &array[2]);
+        // ptr set to memory address at beginning of array because 5 > 4 
+        *ptr = -1;
+        // sets ptr's value to -1 
+        ptr += 2;
+        // increments ptr by 2 int memory address  
+        ptr[1] = 9;
+        // sets the value at 1 int memory address past ptr to 9
+        *(array+1) = 79;
+        // sets array[1] to 79
+        // now array = { -1, 79, 4, 9, 22, 19 };
+
+        cout << &array[5] - ptr << endl;
+        // prints 3 or the difference in memory address (from array[5] to array[2]), pointer arithmetic accounts for bytes int uses in memory
+
+        swap1(&array[0], &array[1]);
+        // pointers passed by value and values of array are not modified, so function doesn't affect the main routine
+        swap2(array, &array[2]);
+        // value at array swapped with value at &array[2] (index 0 and 2)
+
+        for (int i = 0; i < 6; i++)
+            cout << array[i] << endl;
+        // prints array { 4, 79, -1, 9, 22, 19 }
+    }
+    /* Final Output:
+        3   // printing (&array[5] - ptr)
+        4   // printing array values
+        79
+        -1
+        9
+        22
+        19
+    */
+
+
+5. 
+
+    void removeS(char* ptr) 
+    {
+        char* newPtr = ptr;
+        while (*ptr != '\0') {
+            if (*ptr != 's' && *ptr != 'S') {
+                *newPtr = *ptr;
+                newPtr++;
+            }
+            ptr++;
+        } 
+        *newPtr = '\0';  
+    }
 
 
