@@ -1,13 +1,5 @@
 ﻿// bees.cpp
 
-// Portions you are to complete are marked with a TODO: comment.
-// We've provided some incorrect return statements (so indicated) just
-// to allow this skeleton program to compile and run, albeit incorrectly.
-// The first thing you probably want to do is implement the trivial
-// functions (marked TRIVIAL).  Then get Room::display going.  That gives
-// you more flexibility in the order you tackle the rest of the functionality.
-// As you finish implementing each TODO: item, remove its TODO: comment.
-
 #include <iostream>
 #include <string>
 #include <random>
@@ -55,7 +47,7 @@ private:
     Room* m_room;
     int   m_row;
     int   m_col;
-    int   m_health; //CHECK new
+    int   m_health;
 };
 
 class Player
@@ -160,12 +152,12 @@ Bee::Bee(Room* rp, int r, int c)
 
 int Bee::row() const
 {
-    return m_row; // CHECK1 (uses m_row where m_row >= 1)
+    return m_row;
 }
 
 int Bee::col() const
 {
-    return m_col;  // CHECK1
+    return m_col;
 }
 
 void Bee::move()
@@ -173,7 +165,6 @@ void Bee::move()
     // Attempt to move in a random direction; if bee can't move, don't move
     int dir = randInt(0, NUMDIRS - 1);  // dir is now UP, DOWN, LEFT, or RIGHT
 
-    //CHECK if bounds are correct and direction (U=0, D=1, L=2, R=3)
     switch (dir) {
     case UP:
         if (m_row > 1) {
@@ -210,7 +201,7 @@ bool Bee::getSwatted(int dir)  // return true if dies
                 m_row--;
             }
             else {
-                return true; // CHECK Delete bee after (HIT WALL)
+                return true;
             }
             break;
         case DOWN:
@@ -218,7 +209,7 @@ bool Bee::getSwatted(int dir)  // return true if dies
                 m_row++;
             }
             else {
-                return true; // CHECK Delete bee after (HIT WALL)
+                return true;
             }
             break;
         case LEFT:
@@ -226,7 +217,7 @@ bool Bee::getSwatted(int dir)  // return true if dies
                 m_col--;
             }
             else {
-                return true; // CHECK Delete bee after (HIT WALL)
+                return true;
             }
             break;
         case RIGHT:
@@ -234,7 +225,7 @@ bool Bee::getSwatted(int dir)  // return true if dies
                 m_col++;
             }
             else {
-                return true; // CHECK Delete bee after (HIT WALL)
+                return true;
             }
             break;
         }
@@ -269,17 +260,17 @@ Player::Player(Room* rp, int r, int c)
 
 int Player::row() const
 {
-    return m_row;  // Check2 (where m_row >= 1)
+    return m_row;
 }
 
 int Player::col() const
 {
-    return m_col;  // Check3
+    return m_col;
 }
 
 int Player::age() const
 {
-    return m_age;  // Check4
+    return m_age;
 }
 
 void Player::stand()
@@ -290,7 +281,6 @@ void Player::stand()
 void Player::moveOrSwat(int dir)
 {
     m_age++;
-    //Check
 
     switch (dir) {
     case UP:
@@ -330,7 +320,7 @@ void Player::moveOrSwat(int dir)
 
 bool Player::isDead() const
 {
-    return m_dead;  // Check5
+    return m_dead;
 }
 
 void Player::setDead()
@@ -358,7 +348,6 @@ Room::Room(int nRows, int nCols)
 
 Room::~Room()
 {
-    //Check: nullptr check and need to delete array of bee pointers ASK?
     delete m_player;
     for (int bee = 0; bee < m_nBees; bee++) {
         delete m_bees[bee];
@@ -367,12 +356,12 @@ Room::~Room()
 
 int Room::rows() const
 {
-    return m_rows;  // Check6
+    return m_rows;
 }
 
 int Room::cols() const
 {
-    return m_cols;  // Check7
+    return m_cols;
 }
 
 Player* Room::player() const
@@ -388,7 +377,7 @@ int Room::beeCount() const
 int Room::numBeesAt(int r, int c) const
 {
     int count = 0;
-    // Check
+
     for (int bee = 0; bee < m_nBees; bee++) {
         if (m_bees[bee]->row() == r && m_bees[bee]->col() == c) {
             count++;
@@ -399,7 +388,6 @@ int Room::numBeesAt(int r, int c) const
 
 bool Room::determineNewPosition(int& r, int& c, int dir) const
 {
-    //Check
     switch (dir)
     {
     case UP:
@@ -444,7 +432,7 @@ void Room::display() const
         for (c = 0; c < cols(); c++)
             grid[r][c] = '.';
 
-    //Check
+    // Indicate each bee's position
     for (int bee = 0; bee < m_nBees; bee++) {
         char& gridChar = grid[m_bees[bee]->row() - 1][m_bees[bee]->col() - 1];
         if (gridChar == '.') {
@@ -533,8 +521,7 @@ bool Room::swatBeeAt(int r, int c, int dir)
         Bee* currBee = m_bees[bee];
         if (currBee->row() == r && currBee->col() == c) {
             if (currBee->getSwatted(dir)) {
-                delete currBee; //CHECK
-                // (FIXME: Adjust bee array??)
+                delete currBee;
                 m_bees[bee] = m_bees[m_nBees - 1];
                 m_nBees--;
                 return true;
@@ -552,7 +539,6 @@ bool Room::moveBees()
         m_bees[k]->move();
         if (m_bees[k]->row() == m_player->row() && m_bees[k]->col() == m_player->col()) {
             m_player->setDead();
-            //Check: add break??
         }
     }
 
