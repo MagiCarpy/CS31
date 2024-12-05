@@ -281,10 +281,9 @@ void Player::stand()
 void Player::moveOrSwat(int dir)
 {
     m_age++;
-
     switch (dir) {
     case UP:
-        if (m_row > 1 && m_room->numBeesAt(m_row - 1, m_col) != 0) {
+        if (m_row > 1 && m_room->numBeesAt(m_row - 1, m_col) > 0) {
             m_room->swatBeeAt(m_row - 1, m_col, UP);
         }
         else if (m_row > 1) {
@@ -292,7 +291,7 @@ void Player::moveOrSwat(int dir)
         }
         break;
     case DOWN:
-        if (m_row < m_room->rows() && m_room->numBeesAt(m_row + 1, m_col) != 0) {
+        if (m_row < m_room->rows() && m_room->numBeesAt(m_row + 1, m_col) > 0) {
             m_room->swatBeeAt(m_row + 1, m_col, DOWN);
         }
         else if (m_row < m_room->rows()) {
@@ -300,7 +299,7 @@ void Player::moveOrSwat(int dir)
         }
         break;
     case LEFT:
-        if (m_col > 1 && m_room->numBeesAt(m_row, m_col - 1) != 0) {
+        if (m_col > 1 && m_room->numBeesAt(m_row, m_col - 1) > 0) {
             m_room->swatBeeAt(m_row, m_col - 1, LEFT);
         }
         else if (m_col > 1) {
@@ -308,7 +307,7 @@ void Player::moveOrSwat(int dir)
         }
         break;
     case RIGHT:
-        if (m_col < m_room->cols() && m_room->numBeesAt(m_row, m_col + 1) != 0) {
+        if (m_col < m_room->cols() && m_room->numBeesAt(m_row, m_col + 1) > 0) {
             m_room->swatBeeAt(m_row, m_col + 1, RIGHT);
         }
         else if (m_col < m_room->cols()) {
@@ -376,6 +375,11 @@ int Room::beeCount() const
 
 int Room::numBeesAt(int r, int c) const
 {
+    // if invalid r or c input
+    if (r > m_rows || r < 1 || c > m_cols || c < 1) {
+        return -1;
+    }
+
     int count = 0;
 
     for (int bee = 0; bee < m_nBees; bee++) {
